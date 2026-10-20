@@ -1,0 +1,7 @@
+{
+  "name": "video-style",
+  "version": "1.0.0",
+  "description": "주제에 맞는 쇼츠 만들기 — 22가지 모션그래픽 톤에서 스타일을 고르고, 움직임·전환 규칙과 프롬프트 앞머리를 정한다",
+  "author": { "name": "osam555" },
+  "license": "MIT"
+}

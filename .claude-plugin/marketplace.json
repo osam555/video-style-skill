@@ -1,0 +1,8 @@
+{
+  "name": "video-style-skill",
+  "owner": { "name": "osam555" },
+  "metadata": { "description": "주제에 맞는 모션그래픽 쇼츠 스타일(22가지 톤)을 고르는 Claude Code 스킬" },
+  "plugins": [
+    { "name": "video-style", "source": "./plugins/video-style", "description": "쇼츠·영상을 시작할 때 22가지 톤에서 주제에 맞는 스타일을 고르고 움직임·전환 규칙을 정한다" }
+  ]
+}
