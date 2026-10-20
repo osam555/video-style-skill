@@ -1,6 +1,6 @@
 # video-style — 주제에 맞는 모션그래픽 쇼츠 스타일 고르기
 
-> 맥북 기준 안내입니다. Windows 는 아래쪽에 짧게 있습니다.
+> 설치는 **맥북**과 **윈도** 두 가지로 나눠 적었습니다. 내 컴퓨터에 맞는 쪽만 따라 하면 됩니다.
 
 쇼츠·영상을 새로 시작할 때 **그림체(톤)부터** 고르게 하는 Claude Code 스킬입니다. 주제를 이야기 세 칸(core·belief·scene)으로 바꾸고, 22가지 모션그래픽 톤 가운데 후보 둘을 받아 하나를 고른 뒤, 그 톤의 움직임 규칙·전환 규칙·이미지 프롬프트 앞머리를 「톤 결정 블록」으로 남깁니다. 그다음에야 대본·이미지·클립·코드 렌더로 넘어갑니다.
 
@@ -12,7 +12,7 @@
 
 ## 맥북에 설치하기
 
-### 1. Claude Code 가 없다면 먼저 설치
+### 1. Claude Code 설치 (없을 때만)
 
 터미널(응용 프로그램 › 유틸리티 › 터미널)을 열고:
 
@@ -20,30 +20,60 @@
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-설치가 끝나면 터미널을 닫았다 다시 열고 `claude` 를 입력해 로그인합니다. 데스크톱 앱(Claude 앱의 Code 탭)을 써도 됩니다.
+터미널을 닫았다 다시 열고 `claude` 를 입력해 로그인합니다. Claude 데스크톱 앱의 Code 탭을 써도 됩니다.
 
-### 2. 스킬 설치 — 플러그인으로 (권장)
+### 2. 스킬 설치 — 둘 중 하나만
 
-Claude Code 대화창에 두 줄을 차례로 입력합니다.
+**가. 플러그인(권장)** — Claude Code 대화창에 두 줄:
 
 ```
 /plugin marketplace add osam555/video-style-skill
 /plugin install video-style@video-style-skill
 ```
 
-`/plugin` 메뉴에서 `video-style` 이 켜져 있으면 끝입니다. 나중에 스킬이 바뀌면 `/plugin marketplace update video-style-skill` 로 받습니다.
-
-### 2-1. 플러그인 명령이 안 될 때 — 터미널 한 줄
+**나. 터미널 한 줄** — 플러그인 명령이 안 될 때:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/osam555/video-style-skill/main/install.sh | bash
 ```
 
-`~/.claude/skills/video-style/SKILL.md` 에 스킬 문서를 넣습니다(이미 있으면 `.bak` 으로 남깁니다). 두 방법 중 **하나만** 쓰세요. 둘 다 쓰면 같은 스킬이 두 번 잡힙니다.
+`~/.claude/skills/video-style/SKILL.md` 에 들어갑니다. 이미 있으면 `.bak` 으로 남깁니다.
 
-### 3. 확인
+## 윈도에 설치하기
 
-Claude Code 를 새로 열고 「video-style 스킬 있어?」라고 물어보거나, 아래 「쓰는 법」의 문장을 그대로 넣어 봅니다.
+### 1. Claude Code 설치 (없을 때만)
+
+시작 메뉴에서 **PowerShell** 을 열고:
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+PowerShell 을 닫았다 다시 열고 `claude` 를 입력해 로그인합니다. Claude 데스크톱 앱의 Code 탭을 써도 됩니다. Git 이 없다는 안내가 나오면 `winget install Git.Git` 으로 먼저 설치합니다.
+
+### 2. 스킬 설치 — 둘 중 하나만
+
+**가. 플러그인(권장)** — Claude Code 대화창에 두 줄(맥과 같습니다):
+
+```
+/plugin marketplace add osam555/video-style-skill
+/plugin install video-style@video-style-skill
+```
+
+**나. PowerShell 한 줄** — 플러그인 명령이 안 될 때:
+
+```powershell
+irm https://raw.githubusercontent.com/osam555/video-style-skill/main/install.ps1 | iex
+```
+
+`%USERPROFILE%\.claude\skills\video-style\SKILL.md` 에 들어갑니다. 이미 있으면 `.bak` 으로 남깁니다.
+
+## 설치 확인 (맥북·윈도 공통)
+
+- 가(플러그인)로 깔았으면 `/plugin` 메뉴에서 `video-style` 이 켜져 있는지 봅니다. 스킬이 바뀌면 `/plugin marketplace update video-style-skill` 로 받습니다.
+- 나(한 줄)로 깔았으면 같은 한 줄을 다시 실행하면 최신본으로 바뀝니다.
+- **가와 나를 둘 다 쓰지 마세요.** 같은 스킬이 두 번 잡힙니다.
+- Claude Code 를 새로 열고 「video-style 스킬 있어?」라고 물어보면 됩니다.
 
 ## 쓰는 법
 
@@ -56,10 +86,6 @@ core·belief·scene 세 칸을 같이 채우고, 22가지 톤 중 후보 둘을 
 ```
 
 「이 쇼츠 무슨 스타일로 갈까」「그림체 정해 줘」「AI 티가 난다」 같은 말에도 스킬이 열립니다.
-
-## Windows 에서는
-
-같은 플러그인 두 줄이 그대로 됩니다. Claude Code 설치는 PowerShell 에서 `irm https://claude.ai/install.ps1 | iex`, 수동 설치 위치는 `%USERPROFILE%\.claude\skills\video-style\` 입니다.
 
 ## 출처와 라이선스
 
